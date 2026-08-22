@@ -82,13 +82,13 @@ Para ejecutar el proyecto se necesita tener instalado **Node.js**.
 Primero, clona el repositorio:
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/githubjuanmanuel/Algoritmos_Metodos_Numericos.git
 ```
 
 Ingresa a la carpeta del proyecto:
 
 ```bash
-cd NOMBRE_DEL_REPOSITORIO
+cd metodo-biseccion
 ```
 
 Ejecuta el programa:
@@ -132,4 +132,4 @@ Este proyecto fue desarrollado como ejercicio académico para aplicar el **méto
 
 ## 👨‍💻 Autor
 
-Proyecto desarrollado como actividad académica.
+Proyecto desarrollado por Juan Manuel Montoya Montoya como actividad académica.
