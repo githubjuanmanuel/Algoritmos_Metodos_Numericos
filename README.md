@@ -1,8 +1,8 @@
-# Algoritmos de Métodos Numéricos en JavaScript
+# Algoritmos de Métodos Numéricos en JavaScript y Python
 
-Este repositorio reúne diferentes algoritmos desarrollados en **JavaScript** a partir de los temas, métodos y ejercicios vistos en clase.
+Este repositorio reúne diferentes algoritmos desarrollados en **JavaScript** y **Python** a partir de los temas, métodos y ejercicios vistos en clase.
 
-La idea principal es utilizar este espacio como una recopilación organizada de los algoritmos implementados durante el curso, permitiendo consultar su funcionamiento, comparar métodos y documentar el proceso de aprendizaje.
+La idea principal es utilizar este espacio como una recopilación organizada de los algoritmos implementados durante el curso, permitiendo consultar su funcionamiento, comparar métodos y documentar el proceso de aprendizaje en ambos lenguajes de programación.
 
 ## 🎯 Objetivo
 
@@ -10,45 +10,52 @@ Implementar y documentar algoritmos relacionados con los temas estudiados en cla
 
 Cada algoritmo incluido en este repositorio busca mostrar:
 
-- El problema o método que se desea resolver.
-- La lógica utilizada para desarrollar la solución.
-- La implementación en JavaScript.
-- Los valores de entrada utilizados.
-- Los resultados obtenidos.
-- Una breve explicación del funcionamiento.
+* El problema o método que se desea resolver.
+* La lógica utilizada para desarrollar la solución.
+* La implementación en JavaScript y/o Python.
+* Los valores de entrada utilizados.
+* Los resultados obtenidos.
+* Una breve explicación del funcionamiento.
 
 ## 💻 Tecnologías utilizadas
 
-Los ejercicios están desarrollados principalmente con:
+Los ejercicios pueden estar desarrollados con:
 
-- JavaScript
-- Node.js
+* JavaScript
+* Node.js
+* Python
+* NumPy, cuando el ejercicio en Python lo requiera.
+
+El objetivo es practicar los mismos conceptos utilizando diferentes lenguajes y observar las similitudes y diferencias entre sus implementaciones.
 
 ## 📂 Organización del repositorio
 
-Cada tema puede almacenarse dentro de su propia carpeta, incluyendo el código fuente y, cuando sea necesario, un README específico con la explicación del algoritmo.
+Cada tema puede almacenarse dentro de su propia carpeta, incluyendo las implementaciones disponibles en JavaScript y Python y, cuando sea necesario, un README específico con la explicación del algoritmo.
 
 Ejemplo de estructura:
 
 ```text
-algoritmos-clase/
+Algoritmos_Metodos_Numericos/
 │
 ├── metodo-biseccion/
 │   ├── biseccion.js
+│   ├── biseccion.py
 │   └── README.md
 │
 ├── metodo-newton-raphson/
 │   ├── newtonRaphson.js
+│   ├── newton_raphson.py
 │   └── README.md
 │
 ├── metodo-secante/
 │   ├── secante.js
+│   ├── secante.py
 │   └── README.md
 │
 └── README.md
 ```
 
-La estructura puede ampliarse a medida que se estudien nuevos temas.
+No necesariamente todos los algoritmos tendrán desde el inicio una implementación en ambos lenguajes. La estructura puede ampliarse a medida que se estudien nuevos temas y se desarrollen nuevas versiones.
 
 ## 📚 Algoritmos incluidos
 
@@ -58,11 +65,17 @@ Método numérico utilizado para aproximar una raíz de una función continua de
 
 La implementación permite observar cada iteración, el punto medio del intervalo y el error aproximado hasta alcanzar una tolerancia determinada.
 
+Este método puede encontrarse implementado tanto en **JavaScript** como en **Python**, permitiendo comparar la lógica utilizada en ambos lenguajes.
+
 A medida que avance el curso se agregarán nuevos algoritmos desarrollados a partir de los ejercicios y métodos vistos en clase.
 
 ## ▶️ Ejecución de los algoritmos
 
-Para ejecutar los programas es necesario tener instalado **Node.js**.
+Dependiendo del lenguaje utilizado, el procedimiento de ejecución cambia.
+
+### JavaScript
+
+Para ejecutar los programas desarrollados en JavaScript es necesario tener instalado **Node.js**.
 
 Después de clonar el repositorio:
 
@@ -70,19 +83,41 @@ Después de clonar el repositorio:
 git clone https://github.com/githubjuanmanuel/Algoritmos_Metodos_Numericos.git
 ```
 
-Ingresa a la carpeta correspondiente al algoritmo que deseas ejecutar:
+Ingresa a la carpeta correspondiente al algoritmo:
 
 ```bash
 cd metodo-biseccion
 ```
 
-Luego ejecuta el archivo con Node.js:
+Ejecuta el archivo JavaScript:
 
 ```bash
 node biseccion.js
 ```
 
-El nombre del archivo puede cambiar dependiendo del algoritmo.
+### Python
+
+Para ejecutar los programas desarrollados en Python es necesario tener instalado **Python 3**.
+
+Dentro de la carpeta correspondiente al algoritmo, ejecuta:
+
+```bash
+python biseccion.py
+```
+
+Dependiendo de la configuración del sistema también puede ser necesario utilizar:
+
+```bash
+python3 biseccion.py
+```
+
+Algunos ejercicios pueden requerir librerías adicionales como **NumPy**. En ese caso se pueden instalar mediante:
+
+```bash
+pip install numpy
+```
+
+Los nombres de los archivos pueden cambiar dependiendo del algoritmo desarrollado.
 
 ## 🧠 Metodología de trabajo
 
@@ -92,19 +127,28 @@ Para cada nuevo tema visto en clase se puede seguir el siguiente proceso:
 2. Identificar los datos de entrada.
 3. Definir las fórmulas y condiciones necesarias.
 4. Diseñar el algoritmo.
-5. Implementarlo en JavaScript.
+5. Implementarlo en JavaScript y/o Python.
 6. Ejecutar diferentes pruebas.
-7. Revisar los resultados obtenidos.
-8. Documentar el ejercicio dentro del repositorio.
+7. Comparar los resultados obtenidos.
+8. Revisar el comportamiento de las implementaciones.
+9. Documentar el ejercicio dentro del repositorio.
+
+Cuando un mismo algoritmo sea desarrollado en ambos lenguajes, se busca que las implementaciones mantengan una lógica equivalente para facilitar su comparación.
 
 ## 📈 Propósito del repositorio
 
 Este repositorio tiene un propósito principalmente académico y busca servir como evidencia del proceso de aprendizaje y práctica de los algoritmos desarrollados durante el curso.
 
-También puede utilizarse como material de consulta para repasar posteriormente los métodos implementados y observar la evolución de las soluciones realizadas durante las clases.
+También puede utilizarse como material de consulta para:
+
+* Repasar los métodos numéricos estudiados.
+* Consultar implementaciones anteriores.
+* Comparar soluciones desarrolladas en JavaScript y Python.
+* Reforzar conceptos de programación.
+* Observar la evolución de los algoritmos realizados durante las clases.
 
 ## 🚧 Estado del proyecto
 
 Repositorio en desarrollo.
 
-Se agregarán nuevos algoritmos a medida que se estudien nuevos temas y ejercicios en clase.
+Se agregarán nuevos algoritmos y nuevas implementaciones en **JavaScript** y **Python** a medida que se estudien nuevos temas y ejercicios en clase.
