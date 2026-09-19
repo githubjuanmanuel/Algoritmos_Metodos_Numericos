@@ -1,4 +1,5 @@
 import sympy as sp
+import math
 
 
 # ============================================================
@@ -652,67 +653,49 @@ def biseccion(funcion, a, b, tolerancia, max_iteraciones):
 # MÉTODO DE PUNTO FIJO
 # ============================================================
 
-def punto_fijo(g, x0, tolerancia, max_iteraciones):
+def punto_fijo(f, g, x0, tolerancia, max_iteraciones):
+    """
+    Ejecuta el algoritmo del Punto Fijo.
+    f: función original f(x)
+    g: función transformada g(x) tal que x = g(x)
+    """
+    print("\n" + "-" * 60)
+    print(f"{'Iter':<6}{'x_k':<18}{'g(x_k)':<18}{'Error':<18}")
+    print("-" * 60)
 
-    print("\n" + "=" * 85)
-    print("                         MÉTODO DE PUNTO FIJO")
-    print("=" * 85)
-
-    print(
-        f"\n{'Iter':<10}"
-        f"{'x_n':<22}"
-        f"{'x_(n+1)':<22}"
-        f"{'Error absoluto':<22}"
-    )
-
-    print("-" * 85)
-
-    for iteracion in range(1, max_iteraciones + 1):
-
+    x_actual = x0
+    
+    for i in range(1, max_iteraciones + 1):
         try:
-
-            x1 = g(x0)
-
-        except Exception:
-
-            print("\nError al evaluar g(x).")
-            print("Revise el dominio de la función.")
-
+            x_siguiente = g(x_actual)
+        except Exception as e:
+            print(f"\nError al evaluar g(x) en x = {x_actual}: {e}")
             return None
 
-        error = abs(x1 - x0)
+        # Error absoluto entre iteraciones
+        error = abs(x_siguiente - x_actual)
+        
+        print(f"{i:<6}{x_actual:<18.8f}{x_siguiente:<18.8f}{error:<18.8e}")
 
-        print(
-            f"{iteracion:<10}"
-            f"{x0:<22.12f}"
-            f"{x1:<22.12f}"
-            f"{error:<22.12f}"
-        )
+        # Criterio de parada: cambio pequeño y f(x) cercano a cero
+        if error < tolerancia and abs(f(x_siguiente)) < tolerancia:
+            print("-" * 60)
+            print(f"\nConvergencia alcanzada en la iteración {i}.")
+            print(f"Raíz aproximada: x = {x_siguiente:.8f}")
+            print(f"f'(x) = {f(x_siguiente):.8e}")
+            return x_siguiente
 
-        if error < tolerancia:
-
-            print("\nConvergencia alcanzada.")
-
-            print(f"\nRaíz aproximada: {x1:.12f}")
-            print(f"Iteraciones: {iteracion}")
-
-            return x1
-
-        # Protección ante divergencia
-
-        if abs(x1) > 1e100:
-
-            print("\nEl método parece estar divergiendo.")
-
+        # Control de divergencia (overflow / valores indeterminados)
+        if math.isnan(x_siguiente) or math.isinf(x_siguiente) or abs(x_siguiente) > 1e10:
+            print("-" * 60)
+            print("\nEl método parece divergir o producir valores no válidos.")
             return None
 
-        x0 = x1
+        x_actual = x_siguiente
 
-    print("\nSe alcanzó el número máximo de iteraciones.")
-
-    print(f"Última aproximación: {x1:.12f}")
-
-    return x1
+    print("-" * 60)
+    print(f"\nSe alcanzó el número máximo de iteraciones ({max_iteraciones}) sin converger.")
+    return None
 
 
 # ============================================================
@@ -738,11 +721,11 @@ def newton(funcion_simbolica, funcion, x0, tolerancia, max_iteraciones):
 
     print(
         f"\n{'Iter':<8}"
-        f"{'x_n':<22}"
-        f"{'f(x_n)':<22}"
-        f'{"f\'(x_n)":<22}'
-        f"{'x_(n+1)':<22}"
-        f"{'Error':<18}"
+        f"{'x_n':<28}"
+        f"{'f(x_n)':<28}"
+        f"{'f\'(x_n)':<28}"
+        f"{'x_(n+1)':<28}"
+        f"{'Error':<28}"
     )
 
     print("-" * 115)
@@ -779,19 +762,20 @@ def newton(funcion_simbolica, funcion, x0, tolerancia, max_iteraciones):
         error = abs(x1 - x0)
 
         print(
-            f"{iteracion:<8}"
-            f"{x0:<22.12f}"
-            f"{fx:<22.12f}"
-            f"{dfx:<22.12f}"
-            f"{x1:<22.12f}"
-            f"{error:<18.12f}"
+            f"{iteracion:<+8}"
+            f"{x0:<+28.16e}"
+            f"{fx:<+28.16e}"
+            f"{dfx:<+28.16e}"
+            f"{x1:<+28.16e}"
+            f"{error:<+28.16e}"
         )
 
         if error < tolerancia :
 
             print("\nConvergencia alcanzada.")
 
-            print(f"\nRaíz aproximada: {x1:.12f}")
+            print(f"Raíz aproximada: {x1:+.12f} rad")
+            print(f"Raíz aproximada: {math.degrees(x1):+.12f}°")
             print(f"Iteraciones: {iteracion}")
 
             return x1
@@ -941,7 +925,7 @@ def ejecutar_punto_fijo():
 
     print("\nPara aplicar Punto Fijo se necesita escribir:")
     print()
-    print("              x = g(x)")
+    print("            x = g(x)")
     print()
 
     print("Por ejemplo, si:")
@@ -981,7 +965,9 @@ def ejecutar_punto_fijo():
 
             print("x0 debe ser un número.")
 
+    # Se pasa 'funcion' (f) además de 'g' para validar f(x) ~ 0 al finalizar
     punto_fijo(
+        funcion,
         g,
         x0,
         tolerancia,
@@ -1018,7 +1004,7 @@ def ejecutar_newton():
             x0 = float(
                 input("\nIngrese el valor inicial x0: ")
             )
-
+            x0 = math.radians(x0)
             break
 
         except ValueError:
